@@ -43,7 +43,8 @@ resource "aws_instance" "app_instance"{
 	}
 }
 ```
-# VPC Rules
+# VPC
+![img.png](images5/img.png)
 ## Public
 ![img_1.png](images/img_1.png)
 ## Private
