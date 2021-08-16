@@ -23,12 +23,11 @@ resource "aws_instance" "app_instance" {
 ami = "ami-038d7b856fe7557b3"
 instance_type = "t2.micro"
 associate_public_ip_address = true
-key_name = "eng89_saim"
+key_name = var.aws_key_name
 
 # tags is the key word to name the instance eng89_saim_terraform
 tags = {
 Name = "eng89_saim_terraform"
-
 
  }
 }

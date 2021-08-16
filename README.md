@@ -1,4 +1,5 @@
 # Terraform
+![img.png](images/img.png)
 ## What is Terraform?
 Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions. Configuration files describe to Terraform the components needed to run a single application or your entire datacenter.
 
@@ -34,15 +35,18 @@ provider "aws"{
 
 resource "aws_instance" "app_instance"{
 	ami = "ami-038d7b856fe7557b3"
-
 	instance_type = "t2.micro"
-
 	associate_public_ip_address = true
-
 	key_name = "eng89_saim"
-
 	tags = {
 		Name = "eng89_saim_terraform"
 	}
 }
 ```
+# VPC Rules
+## Public
+![img_1.png](images/img_1.png)
+## Private
+![img_2.png](images/img_2.png)
+## Bastion
+![img_3.png](images/img_3.png)
