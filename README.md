@@ -29,19 +29,37 @@ Terraform is a tool for building, changing, and versioning infrastructure safely
 - Specify some details about the instance
 - To SSH into the instance you need to specify the SSH key name. 
 ```
-provider "aws"{
-	region = "eu-west-1"
+# Lets build a script to connect AWS and download/setup all dependencies required
+# keyword: provider aws
+
+
+ provider "aws" {
+
+        region = "eu-west-1"
 }
 
-resource "aws_instance" "app_instance"{
-	ami = "ami-038d7b856fe7557b3"
-	instance_type = "t2.micro"
-	associate_public_ip_address = true
-	key_name = "eng89_saim"
-	tags = {
-		Name = "eng89_saim_terraform"
-	}
+# then we will run terraform init
+# then we will move on to launch aws services
+# Lets launch an ec2 in eu-west-1 with AMI
+# keyword called "resource" provide resource name and give name with specific details to the service
+
+resource "aws_instance" "app_instance" {
+
+# resource aws_ec2_instance, name it as eng89_saim_terraform, ami, type of instance, with or without ip,
+
+ami = "ami-038d7b856fe7557b3"
+instance_type = "t2.micro"
+associate_public_ip_address = true
+key_name = var.aws_key_name
+
+tags = {
+Name = "eng89_saim_terraform"
+ }
 }
+
+# Common commands
+# terraform plan checks the syntax and validates the instruction we have provided in this script
+# once we are happy and the outcome in green we can run terraform apply
 ```
 # VPC
 ![img.png](images5/img.png)
