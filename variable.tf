@@ -2,11 +2,11 @@
 
 variable "aws_key_name" {
 	
-default = "eng89_saim"
+	default = "eng89_saim"
 
 }
 
 variable "aws_key_path" {
 	
-default = "~/.ssh/eng89_saim.pem"
+	default = "~/.ssh/eng89_saim.pem"
 }
