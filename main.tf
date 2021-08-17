@@ -107,8 +107,8 @@ resource "aws_network_acl" "saim_NACL" {
     rule_no = 120
     action = "allow"
     cidr_block = "0.0.0.0/0"
-    from_port = 80
-    to_port = 80
+    from_port = 1024
+    to_port = 65535
   }
 }
 
