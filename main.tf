@@ -259,16 +259,33 @@ resource "aws_instance" "app_instance" {
   vpc_security_group_ids = [aws_security_group.saim_SG_app.id]
   key_name = var.aws_key_name
 
+provisioner "remote-exec" {
+
+       inline = [
+              "cd app",
+              "npm start"
+              ]
+
+
+       connection {
+              type = "ssh"
+              user = "ubuntu"
+              private_key = file(var.aws_key_path)
+              host        = self.associate_public_ip_address
+         }
+}
+
  tags = {
   Name = "eng89_saim_terraform_app"
  }
 }
+
 # Launch DB instance
 resource "aws_instance" "db_instance" {
   ami = var.db_ami
   subnet_id = aws_subnet.saim_private_subnet.id
   instance_type = "t2.micro"
-  associate_public_ip_address = true
+  associate_public_ip_address = false
   vpc_security_group_ids = [aws_security_group.saim_SG_db.id]
   key_name = var.aws_key_name
 
@@ -276,11 +293,3 @@ tags = {
   Name = "eng89_saim_terraform_db"
  }
 }
-
-
-# connection {
-#        type = "ssh"
-#        user = "ubuntu"
-#        private_key = file("${var.aws_key_path}")
-#        host        = self.associate_public_ip_address
-#   }
