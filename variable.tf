@@ -10,5 +10,5 @@ variable "aws_key_path" {
 }
 
 variable "my_ip" {
-	default = ""
+	default = "80.3.207.165/32"
 }
