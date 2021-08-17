@@ -1,5 +1,4 @@
 .terraform/
 .terraform.lock.hcl
 .idea/
-.variable.tf/
-variable.tf/
+variable.tf
