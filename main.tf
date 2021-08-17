@@ -151,7 +151,7 @@ resource "aws_security_group" "saim_SG" {
 
 # Launch an instance
 resource "aws_instance" "app_instance" {
-  ami = "ami-038d7b856fe7557b3"
+  ami = var.my_ami
   subnet_id = aws_subnet.saim_public_subnet.id
   instance_type = "t2.micro"
   associate_public_ip_address = true
@@ -161,4 +161,14 @@ resource "aws_instance" "app_instance" {
 tags = {
   Name = "eng89_saim_terraform_app"
  }
+
+
+connection {
+       type = "ssh"
+       user = "ubuntu"
+       private_key = file("${var.aws_key_path}")
+       host        = self.associate_public_ip_address
+
+  }
 }
+
